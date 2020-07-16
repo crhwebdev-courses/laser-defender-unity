@@ -29,3 +29,8 @@ sysinfo.txt
 # Builds
 *.apk
 *.unitypackage
+
+# Assets
+
+Assets/Space Shooter Visual Assets/
+Assets/Space Shooter Visual Assets.meta
