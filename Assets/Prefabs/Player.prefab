@@ -100,6 +100,9 @@ MonoBehaviour:
   _health: 200
   _projectile: {fileID: 7552041281500565265, guid: c06e5f3a8a070094690263416a1ad5f9,
     type: 3}
+  _explosion: {fileID: 515492978681963809, guid: 98dc3301170050a49b5ac7e95c139117,
+    type: 3}
+  _durationOfExplosion: 1
   _projectileSpeed: 10
   _projectileFiringPeriod: 0.1
 --- !u!58 &-8914825740589206824

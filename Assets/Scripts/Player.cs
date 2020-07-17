@@ -13,9 +13,12 @@ public class Player : MonoBehaviour
     [SerializeField] int _health = 200;
     [Header("Projectile")]
     [SerializeField] GameObject _projectile;
+    [SerializeField] GameObject _explosion;
+    [SerializeField]  private float _durationOfExplosion = 1f;
     [SerializeField] float _projectileSpeed = 10f;
     [SerializeField] float _projectileFiringPeriod = 0.1f;
-        
+    
+
     // state
     private float _xMin;
     private float _xMax;
@@ -23,6 +26,7 @@ public class Player : MonoBehaviour
     private float _yMax;
     Coroutine _firingCoroutine;
     
+
     void Start()
     {
         SetUpMoveBoundaries();
@@ -99,7 +103,14 @@ public class Player : MonoBehaviour
 
         if (_health <= 0)
         {
-            Destroy(gameObject);
+            Die();
         }
+    }
+
+    private void Die()
+    {
+        Destroy(gameObject);
+        GameObject explosion = Instantiate(_explosion, transform.position, transform.rotation);
+        Destroy(explosion, _durationOfExplosion);
     }
 }
