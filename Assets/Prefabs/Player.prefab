@@ -95,13 +95,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dc4b23a1bdb952c40acf2bbe5416f9d5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 10
-  padding: 1
+  _moveSpeed: 10
+  _padding: 1
   _health: 200
-  laserPrefab: {fileID: 7552041281500565265, guid: c06e5f3a8a070094690263416a1ad5f9,
+  _projectile: {fileID: 7552041281500565265, guid: c06e5f3a8a070094690263416a1ad5f9,
     type: 3}
-  projectileSpeed: 20
-  projectileFiringPeriod: 0.1
+  _projectileSpeed: 10
+  _projectileFiringPeriod: 0.1
 --- !u!58 &-8914825740589206824
 CircleCollider2D:
   m_ObjectHideFlags: 0
