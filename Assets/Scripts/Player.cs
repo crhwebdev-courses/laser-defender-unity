@@ -8,16 +8,20 @@ public class Player : MonoBehaviour
 {
     // config params
     [Header("Player")]
-    [SerializeField] float _moveSpeed = 10f;
-    [SerializeField] float _padding = 1f;
-    [SerializeField] int _health = 200;
+    [SerializeField] private float _moveSpeed = 10f;
+    [SerializeField] private float _padding = 1f;
+    [SerializeField] private int _health = 200;    
     [Header("Projectile")]
-    [SerializeField] GameObject _projectile;
-    [SerializeField] GameObject _explosion;
-    [SerializeField]  private float _durationOfExplosion = 1f;
-    [SerializeField] float _projectileSpeed = 10f;
-    [SerializeField] float _projectileFiringPeriod = 0.1f;
-    
+    [SerializeField] private GameObject _projectile;    
+    [SerializeField] private AudioClip _fireLaserSFX;
+    [SerializeField] [Range(0, 1)] private float _fireLaserSFXVolume = 0.25f;    
+    [SerializeField] private float _projectileSpeed = 10f;
+    [SerializeField] private float _projectileFiringPeriod = 0.1f;
+    [Header("Explosion")]
+    [SerializeField] private GameObject _explosion;
+    [SerializeField] private float _durationOfExplosion = 1f;
+    [SerializeField] private AudioClip _deathSFX;
+    [SerializeField] [Range(0, 1)] private float _deathSFXVolume = 0.7f;
 
     // state
     private float _xMin;
@@ -67,12 +71,16 @@ public class Player : MonoBehaviour
     {
         while(true)
         {
+            // Play fire SFX Here
             GameObject laser = Instantiate(
                 _projectile,
                 transform.position,
                 Quaternion.identity) as GameObject;
 
             laser.GetComponent<Rigidbody2D>().velocity = new Vector2(0, _projectileSpeed);
+
+            // Play fire SFX Here
+            AudioSource.PlayClipAtPoint(_fireLaserSFX, Camera.main.transform.position, _fireLaserSFXVolume);
 
             yield return new WaitForSeconds(_projectileFiringPeriod);
         }                
@@ -109,8 +117,12 @@ public class Player : MonoBehaviour
 
     private void Die()
     {
+        
         Destroy(gameObject);
         GameObject explosion = Instantiate(_explosion, transform.position, transform.rotation);
         Destroy(explosion, _durationOfExplosion);
+
+        //Play death SFX here
+        AudioSource.PlayClipAtPoint(_deathSFX, Camera.main.transform.position, _deathSFXVolume);
     }
 }

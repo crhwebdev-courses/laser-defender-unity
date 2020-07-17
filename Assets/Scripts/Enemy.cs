@@ -5,15 +5,21 @@ using UnityEngine;
 
 public class Enemy : MonoBehaviour
 {
-    [SerializeField] private float _health = 100;
+    [Header("Enemy")]
+    [SerializeField] private float _health = 100;    
+    [Header("Projectile")]
+    [SerializeField] GameObject _projectile;
+    [SerializeField] AudioClip _fireLaserSFX;
+    [SerializeField] [Range(0, 1)] private float _fireLaserSFXVolume = 0.25f;
+    [SerializeField] float _projectileSpeed = 10f;
     [SerializeField] float _shotCounter;
     [SerializeField] float _minTimeBetweenShots = 0.2f;
-    [SerializeField] float _maxTimeBetweenShots = 3f;
-    [SerializeField] float _projectileSpeed = 10f;
-    [SerializeField] float _durationOfExplosion = 1f;
-
+    [SerializeField] float _maxTimeBetweenShots = 3f;        
+    [Header("Explosion")]
     [SerializeField] GameObject _explosion;
-    [SerializeField] GameObject _projectile;
+    [SerializeField] float _durationOfExplosion = 1f;
+    [SerializeField] AudioClip _deathSFX;
+    [SerializeField] [Range(0, 1)] private float _deathSFXVolume = 0.7f;
 
     // Start is called before the first frame update
     void Start()
@@ -39,12 +45,16 @@ public class Enemy : MonoBehaviour
 
     private void Fire()
     {
+        
         GameObject laser = Instantiate(
                 _projectile,
                 transform.position,
                 Quaternion.identity) as GameObject;
 
         laser.GetComponent<Rigidbody2D>().velocity = new Vector2(0, -_projectileSpeed);
+
+        // Play fire SFX Here
+        AudioSource.PlayClipAtPoint(_fireLaserSFX, Camera.main.transform.position, _fireLaserSFXVolume);
     }
 
     private void OnTriggerEnter2D(Collider2D other)
@@ -66,10 +76,13 @@ public class Enemy : MonoBehaviour
     }
 
     private void Die()
-    {
+    {        
         Destroy(gameObject);
         GameObject explosion = Instantiate(_explosion, transform.position, transform.rotation);
         Destroy(explosion, _durationOfExplosion);
+
+        //Play death SFX here
+        AudioSource.PlayClipAtPoint(_deathSFX, Camera.main.transform.position, _deathSFXVolume);
     }
     
 }
