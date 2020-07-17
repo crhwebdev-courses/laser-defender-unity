@@ -266,11 +266,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: -4850453575694044848, guid: 2069f81b4485a6d419e0b117554e96c5,
-        type: 3}
-      propertyPath: m_UsedByComposite
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: -3899969431770278442, guid: 2069f81b4485a6d419e0b117554e96c5,
         type: 3}
       propertyPath: _health
