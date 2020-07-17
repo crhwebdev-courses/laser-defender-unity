@@ -37,7 +37,7 @@ public class EnemyPathing : MonoBehaviour
         if (_waypointIndex <= _waypoints.Count - 1)
         {            
             var targetPosition = _waypoints[_waypointIndex].position;                        
-            var movementThisFrame = _waveConfig.GetMoveSpeed() * Time.deltaTime;            
+            var movementThisFrame = _waveConfig.MoveSpeed * Time.deltaTime;            
             transform.position = Vector2.MoveTowards(transform.position, targetPosition, movementThisFrame);            
             if(targetPosition == transform.position)
             {
