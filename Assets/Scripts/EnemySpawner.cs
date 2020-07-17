@@ -5,9 +5,9 @@ using UnityEngine;
 
 public class EnemySpawner : MonoBehaviour
 {
-    [SerializeField] List<WaveConfig> waveConfigs;
-    [SerializeField] int startingWave = 0;
-    [SerializeField] bool looping = false;
+    [SerializeField] List<WaveConfig> _waveConfigs;
+    [SerializeField] int _startingWave = 0;
+    [SerializeField] bool _looping = false;
 
     // Start is called before the first frame update
     IEnumerator Start()
@@ -16,14 +16,14 @@ public class EnemySpawner : MonoBehaviour
         {
             yield return StartCoroutine(SpawnAllWaves());
         }
-        while (looping);        
+        while (_looping);        
     }
 
     private IEnumerator SpawnAllWaves()
     {
-        for(int waveIndex = startingWave; waveIndex < waveConfigs.Count; waveIndex++)
+        for(int waveIndex = _startingWave; waveIndex < _waveConfigs.Count; waveIndex++)
         {
-            var currentWave = waveConfigs[waveIndex];
+            var currentWave = _waveConfigs[waveIndex];
             yield return StartCoroutine(SpawnAllEnemiesInWave(currentWave));
         }
     }
