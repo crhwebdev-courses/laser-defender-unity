@@ -6,17 +6,17 @@ using UnityEngine;
 public class Enemy : MonoBehaviour
 {
     [SerializeField] private float _health = 100;
-    [SerializeField] float shotCounter;
-    [SerializeField] float minTimeBetweenShots = 0.2f;
-    [SerializeField] float maxTimeBetweenShots = 3f;
-    [SerializeField] float projectileSpeed = 10f;
+    [SerializeField] float _shotCounter;
+    [SerializeField] float _minTimeBetweenShots = 0.2f;
+    [SerializeField] float _maxTimeBetweenShots = 3f;
+    [SerializeField] float _projectileSpeed = 10f;
 
-    [SerializeField] GameObject projectile;
+    [SerializeField] GameObject _projectile;
 
     // Start is called before the first frame update
     void Start()
     {
-        shotCounter = UnityEngine.Random.Range(minTimeBetweenShots, maxTimeBetweenShots);
+        _shotCounter = UnityEngine.Random.Range(_minTimeBetweenShots, _maxTimeBetweenShots);
     }
 
     // Update is called once per frame
@@ -27,24 +27,24 @@ public class Enemy : MonoBehaviour
 
     private void CountDownAndShoot()
     {
-        shotCounter -= Time.deltaTime;
-        Debug.Log("Shot counter: " + shotCounter.ToString());
-        if(shotCounter < 0f)
+        _shotCounter -= Time.deltaTime;
+        Debug.Log("Shot counter: " + _shotCounter.ToString());
+        if(_shotCounter < 0f)
         {
             Debug.Log("Fired!");
             Fire();
-            shotCounter = UnityEngine.Random.Range(minTimeBetweenShots, maxTimeBetweenShots);
+            _shotCounter = UnityEngine.Random.Range(_minTimeBetweenShots, _maxTimeBetweenShots);
         }
     }
 
     private void Fire()
     {
         GameObject laser = Instantiate(
-                projectile,
+                _projectile,
                 transform.position,
                 Quaternion.identity) as GameObject;
 
-        laser.GetComponent<Rigidbody2D>().velocity = new Vector2(0, -projectileSpeed);
+        laser.GetComponent<Rigidbody2D>().velocity = new Vector2(0, -_projectileSpeed);
     }
 
     private void OnTriggerEnter2D(Collider2D other)
