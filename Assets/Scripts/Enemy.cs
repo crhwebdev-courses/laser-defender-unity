@@ -27,11 +27,9 @@ public class Enemy : MonoBehaviour
 
     private void CountDownAndShoot()
     {
-        _shotCounter -= Time.deltaTime;
-        Debug.Log("Shot counter: " + _shotCounter.ToString());
+        _shotCounter -= Time.deltaTime;     
         if(_shotCounter < 0f)
-        {
-            Debug.Log("Fired!");
+        {            
             Fire();
             _shotCounter = UnityEngine.Random.Range(_minTimeBetweenShots, _maxTimeBetweenShots);
         }
@@ -49,7 +47,6 @@ public class Enemy : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-
         DamageDealer damageDealer = other.gameObject.GetComponent<DamageDealer>();
 
         ProcessHit(damageDealer);
