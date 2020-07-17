@@ -58,7 +58,7 @@ public class Enemy : MonoBehaviour
     private void ProcessHit(DamageDealer damageDealer)
     {
         _health -= damageDealer.Damage;
-        //damageDealer.Hit();
+        damageDealer.Hit();
 
         if (_health <= 0)
         {
