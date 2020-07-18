@@ -10,8 +10,9 @@ GameObject:
   m_Component:
   - component: {fileID: 4557182793570531100}
   - component: {fileID: 4557182793570531099}
-  - component: {fileID: 4557182793570531101}
+  - component: {fileID: -1516757109104534510}
   - component: {fileID: -8914825740589206824}
+  - component: {fileID: 4557182793570531101}
   m_Layer: 8
   m_Name: Player
   m_TagString: Untagged
@@ -83,6 +84,43 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!50 &-1516757109104534510
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4557182793570531098}
+  m_BodyType: 1
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 1
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0
+--- !u!58 &-8914825740589206824
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4557182793570531098}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: -0.029503345}
+  serializedVersion: 2
+  m_Radius: 0.3567996
 --- !u!114 &4557182793570531101
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -107,21 +145,5 @@ MonoBehaviour:
   _explosion: {fileID: 515492978681963809, guid: 98dc3301170050a49b5ac7e95c139117,
     type: 3}
   _durationOfExplosion: 1
-  _deathSFX: {fileID: 8300000, guid: 1e441d40b758ff349a4f68e780a0d887, type: 3}
+  _deathSFX: {fileID: 8300000, guid: e7be275b8bbcf31489b7c53b308e9c41, type: 3}
   _deathSFXVolume: 1
---- !u!58 &-8914825740589206824
-CircleCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4557182793570531098}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: -0.029503345}
-  serializedVersion: 2
-  m_Radius: 0.3567996

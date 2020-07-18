@@ -10,9 +10,11 @@ GameObject:
   m_Component:
   - component: {fileID: 7649728220109070019}
   - component: {fileID: 7649728220109070018}
-  - component: {fileID: -3494870521209072215}
-  - component: {fileID: 6446688638922372477}
+  - component: {fileID: -3321466573756709764}
   - component: {fileID: -5531121788910472494}
+  - component: {fileID: 6446688638922372477}
+  - component: {fileID: -3494870521209072215}
+  - component: {fileID: 2318696498768139900}
   m_Layer: 9
   m_Name: Enemy
   m_TagString: Untagged
@@ -84,18 +86,43 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &-3494870521209072215
-MonoBehaviour:
+--- !u!50 &-3321466573756709764
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7649728220109070021}
+  m_BodyType: 1
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 1
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0
+--- !u!58 &-5531121788910472494
+CircleCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7649728220109070021}
   m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dc04865a26b25cd47b5233fa21c79b86, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0.0016686916}
+  serializedVersion: 2
+  m_Radius: 0.35481882
 --- !u!114 &6446688638922372477
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -109,32 +136,41 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _health: 100
-  _shotCounter: 0
-  _minTimeBetweenShots: 0.2
-  _maxTimeBetweenShots: 3
-  _projectileSpeed: 10
-  _durationOfExplosion: 1
-  _explosion: {fileID: 515492978681963809, guid: 98dc3301170050a49b5ac7e95c139117,
-    type: 3}
   _projectile: {fileID: 489851079181643704, guid: 6036eb97702fbca40a39588c57c5a5be,
     type: 3}
   _fireLaserSFX: {fileID: 8300000, guid: a8d5e16c53cb4b643a633ee247782426, type: 3}
   _fireLaserSFXVolume: 0.25
+  _projectileSpeed: 10
+  _shotCounter: 0
+  _minTimeBetweenShots: 0.2
+  _maxTimeBetweenShots: 3
+  _explosion: {fileID: 515492978681963809, guid: 98dc3301170050a49b5ac7e95c139117,
+    type: 3}
+  _durationOfExplosion: 1
   _deathSFX: {fileID: 8300000, guid: 1e441d40b758ff349a4f68e780a0d887, type: 3}
   _deathSFXVolume: 0.7
---- !u!58 &-5531121788910472494
-CircleCollider2D:
+--- !u!114 &-3494870521209072215
+MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7649728220109070021}
   m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0.0016686916}
-  serializedVersion: 2
-  m_Radius: 0.35481882
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dc04865a26b25cd47b5233fa21c79b86, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &2318696498768139900
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7649728220109070021}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 10f37e5ef015d4846a12ad539b237adc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _damage: 1000
