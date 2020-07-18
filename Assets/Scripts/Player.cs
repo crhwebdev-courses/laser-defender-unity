@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Xml.Schema;
+using TMPro;
 using UnityEngine;
 
 public class Player : MonoBehaviour
@@ -10,7 +11,8 @@ public class Player : MonoBehaviour
     [Header("Player")]
     [SerializeField] private float _moveSpeed = 10f;
     [SerializeField] private float _padding = 1f;
-    [SerializeField] private int _health = 200;    
+    [SerializeField] private int _health = 200;
+    [SerializeField] private TextMeshProUGUI _healthText;
     [Header("Projectile")]
     [SerializeField] private GameObject _projectile;    
     [SerializeField] private AudioClip _fireLaserSFX;
@@ -33,6 +35,7 @@ public class Player : MonoBehaviour
     void Start()
     {
         SetUpMoveBoundaries();
+        UpdatePlayerHealthText(_health);
     }
 
     void Update()
@@ -107,13 +110,14 @@ public class Player : MonoBehaviour
     {
         _health -= damageDealer.Damage;
         damageDealer.Hit();
+        UpdatePlayerHealthText(_health);
 
         if (_health <= 0)
         {
             Die();
         }
     }
-
+    
     private void Die()
     {        
         Destroy(gameObject);
@@ -122,5 +126,12 @@ public class Player : MonoBehaviour
         //Play death SFX here
         AudioSource.PlayClipAtPoint(_deathSFX, Camera.main.transform.position, _deathSFXVolume);
         FindObjectOfType<Level>().LoadGameOver();
+    }
+
+    private void UpdatePlayerHealthText(int health)
+    {
+        if (health < 0)
+            health = 0;
+        _healthText.text = health.ToString();
     }
 }

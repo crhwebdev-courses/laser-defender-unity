@@ -6,7 +6,7 @@ using UnityEngine;
 public class Enemy : MonoBehaviour
 {
     [Header("Enemy")]
-    [SerializeField] private float _health = 100;    
+    [SerializeField] private float _health = 100;     
     [Header("Projectile")]
     [SerializeField] GameObject _projectile;
     [SerializeField] AudioClip _fireLaserSFX;
@@ -21,9 +21,12 @@ public class Enemy : MonoBehaviour
     [SerializeField] AudioClip _deathSFX;
     [SerializeField] [Range(0, 1)] private float _deathSFXVolume = 0.7f;
 
+    private Level _level;
+
     // Start is called before the first frame update
     void Start()
     {
+        _level = FindObjectOfType<Level>();
         _shotCounter = UnityEngine.Random.Range(_minTimeBetweenShots, _maxTimeBetweenShots);
     }
 
@@ -71,6 +74,9 @@ public class Enemy : MonoBehaviour
 
         if (_health <= 0)
         {
+            //increment score here
+            _level.IncrementScore();
+
             Die();            
         }
     }
