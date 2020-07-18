@@ -30,7 +30,6 @@ public class Player : MonoBehaviour
     private float _yMax;
     Coroutine _firingCoroutine;
     
-
     void Start()
     {
         SetUpMoveBoundaries();
@@ -116,13 +115,12 @@ public class Player : MonoBehaviour
     }
 
     private void Die()
-    {
-        
+    {        
         Destroy(gameObject);
         GameObject explosion = Instantiate(_explosion, transform.position, transform.rotation);
         Destroy(explosion, _durationOfExplosion);
-
         //Play death SFX here
         AudioSource.PlayClipAtPoint(_deathSFX, Camera.main.transform.position, _deathSFXVolume);
+        FindObjectOfType<Level>().LoadGameOver();
     }
 }
