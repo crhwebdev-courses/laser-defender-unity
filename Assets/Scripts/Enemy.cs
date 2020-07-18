@@ -13,7 +13,6 @@ public class Enemy : MonoBehaviour
     [SerializeField] AudioClip _fireLaserSFX;
     [SerializeField] [Range(0, 1)] private float _fireLaserSFXVolume = 0.25f;
     [SerializeField] float _projectileSpeed = 10f;
-    [SerializeField] float _shotCounter;
     [SerializeField] float _minTimeBetweenShots = 0.2f;
     [SerializeField] float _maxTimeBetweenShots = 3f;        
     [Header("Explosion")]
@@ -22,6 +21,7 @@ public class Enemy : MonoBehaviour
     [SerializeField] AudioClip _deathSFX;
     [SerializeField] [Range(0, 1)] private float _deathSFXVolume = 0.7f;
 
+    private float _shotCounter;
     private ScoreBoard _scoreBoard;
 
     // Start is called before the first frame update
