@@ -43,6 +43,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5f2b640f8fbc21e4e8c1975804d925a4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _gameStartScene: Game Start Scene
+  _gameStartScene: 0
   _gameScene: Game
-  _gameOverScene: Game Over Scene
+  _gameOverScene: Game Over

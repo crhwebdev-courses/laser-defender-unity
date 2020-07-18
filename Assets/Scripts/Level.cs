@@ -3,9 +3,9 @@ using UnityEngine.SceneManagement;
 
 public class Level : MonoBehaviour
 {
-    [SerializeField] private string _gameStartScene = "Game Start Scene";
+    [SerializeField] private int _gameStartScene = 0;
     [SerializeField] private string _gameScene = "Game";
-    [SerializeField] private string _gameOverScene = "Game Over Scene";
+    [SerializeField] private string _gameOverScene = "Game Over";
 
     public void LoadStartMenu()
     {
